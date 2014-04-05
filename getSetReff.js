@@ -8,7 +8,7 @@ function getSetReff()
     function gcP(p) { if (document.location.search.indexOf(p) != -1) { return (""+document.location.search.split(p+"=")[1]).split("&")[0]; } else { return "not-set"; }  }
     var _reff=[];
     _reff = dataLayer.filter(function (value) {if (value.setDomain) return value;});
-	
+    
     //every pageview
     var __asc = (typeof rC("__sreff") != "undefined" ? rC("__sreff") : "");
     var __apc = (typeof rC("__reff") != "undefined" ? rC("__reff") : "");
@@ -29,7 +29,9 @@ function getSetReff()
         __gsr = "campaign://"+(__apc.split("|")[__apc.split("|").length-1]).split("&")[0];
     }
     else { __gsr = document.referrer; }
-    
+
+    //get referrer domain & verify adwords
+    __gsr = ((document.location.search.indexOf("gclid") != -1 && document.referrer != "") ? __gsr= __gsr.split('/')[2]+":[adwords]" : __gsr.split('/')[2]) 
     
     if (__asc)
     {
@@ -52,7 +54,7 @@ function getSetReff()
     // if refferer is not current domain
     if (__nwss == 1 || __gsr.indexOf(_reff[0].setDomain)==-1)
     {
-        __rf = (__gsr != "" ? __gsr.split('/')[2] : "(direct)");      
+        __rf = (__gsr != "" ? __gsr : "(direct)");      
         t__apc = __apc.split("|");
         __tpc = t__apc[t__apc.length-1];
         __tpc=__tpc.split("&")[0];
