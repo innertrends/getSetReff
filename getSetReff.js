@@ -1,5 +1,5 @@
 var dataLayer = dataLayer || [];
-dataLayer.push({"getSetReff" : "v1.0", "setDomain" : "yourdomain.com"});
+dataLayer.push({"getSetReff" : "v1.0", "setDomain" : ".yourdomain.com"});
 
 function getSetReff()
 {
@@ -32,7 +32,8 @@ function getSetReff()
 
     //get referrer domain & verify adwords
     __gsr = ((document.location.search.indexOf("gclid") != -1 && document.referrer != "") ? __gsr= __gsr.split('/')[2]+":[adwords]" : __gsr.split('/')[2]) 
-    
+    __gsr = ((__gsr != "" && typeof __gsr != "undefined") ? __gsr : ""); 
+
     if (__asc)
     {
         __tsc = __asc.split(".");
@@ -45,7 +46,15 @@ function getSetReff()
     {
         __tsc[0] = __tsc[1] = new Date().getTime(); //start time = current time
         __tsc[2]=1; //first pageview
-        __tsc[3]=0; //todo - identify new vs returning visitor
+        if (__apc)
+        {
+            __tsc[3] = (parseInt(__apc.slice(__apc.length-1)));
+            __tsc[3]++;
+        }
+        else
+        {
+            __tsc[3]=0; 
+        }
         __asc = __tsc.join(".");
         __nwss = 1;
         sC("__sreff",__asc);
@@ -54,7 +63,7 @@ function getSetReff()
     // if refferer is not current domain
     if (__nwss == 1 || __gsr.indexOf(_reff[0].setDomain)==-1)
     {
-        __rf = (__gsr != "" ? __gsr : "(direct)");      
+        __rf = ((__gsr == "" || __gsr.indexOf(_reff[0].setDomain)!=-1) ? "(direct)" : __gsr);      
         t__apc = __apc.split("|");
         __tpc = t__apc[t__apc.length-1];
         __tpc=__tpc.split("&")[0];
@@ -65,9 +74,9 @@ function getSetReff()
         t__apc = __apc.split("|");
         __tpc = t__apc[t__apc.length-1];
         __tpc=__tpc.split("&")[0] != "" ? __tpc.split("&")[0] : "(direct)";
-        __tpc = __tcp.indexOf(_reff[0].setDomain)!=-1 ? __tcp : "(direct)";
+        __tpc = __tpc.indexOf(_reff[0].setDomain)!=-1 ? __tpc : "(direct)";
         res__apc = (t__apc.length == 1 ? "" : (t__apc.slice(0,-1).join("|")+"|"));
-        sC("__reff",res__apc+__tpc+"&"+__asc,180);
+        sC("__reff",res__apc+__tpc+"&"+__asc,730);
     }
     
 
