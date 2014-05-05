@@ -22,8 +22,10 @@ dataLayer.push({"getSetReff" : "v1.0", "setDomain" : ".ReplaceWithYourDomain.com
 ```
 
 **Step 2**:
-Place the getSetReff() function definition under the dataLayer declaration. It can be done in an external file.
-
+Load the getSetReff.min.js under the dataLayer declaration. It can be done in an external file.
+```javascript
+<script type="text/javascript" src="getSetReff.min.js"></script>
+```
 
 **Step 3**:
 Trigger the getSetReff() function.
