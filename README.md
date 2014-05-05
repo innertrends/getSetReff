@@ -6,7 +6,7 @@ With the upgrade, the **__utmz** cookie that used to contain the last referrer d
 
 getSetReff() replicates the functionality of the **__utmz** cookie and adds a few features on top:
 * stores all the referrers of a visitor, not just the last referrer
-* is able to identify marketing campaigns as reffers, based on the utm parameters
+* is able to identify marketing campaigns as referrers, based on the utm parameters
 * stores the length of each visit both in time spent and in number of pages viewed
 
 Setting it up
