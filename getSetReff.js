@@ -1,6 +1,3 @@
-var dataLayer = dataLayer || [];
-dataLayer.push({"getSetReff" : "v1.0", "setDomain" : ".yourdomain.com"});
-
 function getSetReff()
 {
     function rC(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
@@ -46,15 +43,6 @@ function getSetReff()
     {
         __tsc[0] = __tsc[1] = new Date().getTime(); //start time = current time
         __tsc[2]=1; //first pageview
-        if (__apc)
-        {
-            __tsc[3] = (parseInt(__apc.slice(__apc.length-1)));
-            __tsc[3]++;
-        }
-        else
-        {
-            __tsc[3]=0; 
-        }
         __asc = __tsc.join(".");
         __nwss = 1;
         sC("__sreff",__asc);

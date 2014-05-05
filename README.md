@@ -15,17 +15,28 @@ Setting it up
 *Step 1*:
 Set the domain on which the getSetReff script is added inside the dataLayer variable
 ```javascript
+<script type="text/javascript">
 var dataLayer = dataLayer || [];
 dataLayer.push({"getSetReff" : "v1.0", "setDomain" : "*.yourdomain.com*"});
+</script>
 ```
 
 Step 2:
-Paste the getSetReff() function under the dataLayer declaration.
-Each time the function loads, it will write in the following 2 cookies:
+Place the getSetReff() function definition under the dataLayer declaration. It can be done in an external file.
+
+
+Step 3:
+Trigger the getSetReff() function.
+```javascript
+<script type="text/javascript">
+getSetReff();
+</script>
+```
+Each time the function is triggered, it will write inside the following 2 cookies:
  * *__reff* stores all the details about all past referrers for at least 2 years
  * *__sreff* a session cookie used to calculate time spent on website and number of viewed pages. Gets deleted after the session expire
 
-Step 3:
+Step 4:
 Whenever you need, just store the content of the *__reff* cookie on your own database for future analyses.
 
 Possible __reff values
@@ -34,24 +45,24 @@ Possible __reff values
 Before diving into cookie examples, here is a bit of explanation of the special characters and elements found in the cookie:
 * | is used to mark out each visit with its traffic source
 * & is used to split the traffic source from the visit details
-* _XXXXXXXXXXXX.XXXXXXXXXXXX.X.X_ represents _timestampVisitStart.timeStampLastAction.pagesViewed.countOfVisit_
+* _XXXXXXXXXXXX.XXXXXXXXXXXX.X.X_ represents _timestampVisitStart.timeStampLastAction.pagesViewed
 
 ### Single referrer
 When a visitor first gets to your website, the *__reff* will have a value similar to this one:
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1.0"
+"hsrd.yahoo.com&1396714229529.1396714229529.1"
 ```
 
 ### Multiple referrers
 Subsequent future visits will drive the *__reff* cookie to grow to this
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1.0|www.google.com&1396714366071.1396714366071.1.0"
+"hsrd.yahoo.com&1396714229529.1396714229529.1|www.google.com&1396714366071.1396714366071.1"
 ```
 
 ### Marketing Campaigns as referrers
 If the 3rd visit will be via a marketing campaign (which uses utm variables), the cookie will become
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1.0|www.google.com&1396714366071.1396714366071.1.0|c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1.0"
+"hsrd.yahoo.com&1396714229529.1396714229529.1|www.google.com&1396714366071.1396714366071.1|c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1"
 ```
 *c* represents the campaign name, *m* the medium name and *s* the source name.
 
@@ -59,7 +70,7 @@ If the 3rd visit will be via a marketing campaign (which uses utm variables), th
 ### AdWords campaigns
 If the 4th traffic source that brought the user to the website was AdWords, the cookie will look like this
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1.0|www.google.com&1396714366071.1396714366071.1.0|c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1.0|www.google.com:[adwords]&1396714638762.1396714638762.1.0"
+"hsrd.yahoo.com&1396714229529.1396714229529.1|www.google.com&1396714366071.1396714366071.1|c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1|www.google.com:[adwords]&1396714638762.1396714638762.1"
 ```
 
 
