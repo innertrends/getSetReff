@@ -1,31 +1,31 @@
-Get all past referrers for each website visitor
+Store all referrers of website visitors
 ===============================================
 
 In April 2014, Google Analytics upgraded to a new tracking code and technology, named Universal Analytics. 
-With the upgrade, the *__utmz* cookie that used to contain the last referrer details for each visitor was rolled out.
+With the upgrade, the **__utmz** cookie that used to contain the last referrer details for each visitor was rolled out.
 
-getSetReff() replicates the functionality of the *__utmz* cookie and adds a few features on top:
-* stores all the referrers of a visitor not just the last one
+getSetReff() replicates the functionality of the **__utmz** cookie and adds a few features on top:
+* stores all the referrers of a visitor, not just the last referrer
 * is able to identify marketing campaigns as reffers, based on the utm parameters
 * stores the length of each visit both in time spent and in number of pages viewed
 
 Setting it up
 -------------
 
-*Step 1*:
+**Step 1**:
 Set the domain on which the getSetReff script is added inside the dataLayer variable
 ```javascript
 <script type="text/javascript">
 var dataLayer = dataLayer || [];
-dataLayer.push({"getSetReff" : "v1.0", "setDomain" : "*.yourdomain.com*"});
+dataLayer.push({"getSetReff" : "v1.0", "setDomain" : ".ReplaceWithYourDomain.com"});
 </script>
 ```
 
-Step 2:
+**Step 2**:
 Place the getSetReff() function definition under the dataLayer declaration. It can be done in an external file.
 
 
-Step 3:
+**Step 3**:
 Trigger the getSetReff() function.
 ```javascript
 <script type="text/javascript">
@@ -36,7 +36,7 @@ Each time the function is triggered, it will write inside the following 2 cookie
  * *__reff* stores all the details about all past referrers for at least 2 years
  * *__sreff* a session cookie used to calculate time spent on website and number of viewed pages. Gets deleted after the session expire
 
-Step 4:
+**Step 4**:
 Whenever you need, just store the content of the *__reff* cookie on your own database for future analyses.
 
 Possible __reff values
