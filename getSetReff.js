@@ -1,10 +1,12 @@
 function getSetReff()
 {
-    function rC(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
-    function sC(n,v,d) { dd = new Date(); dd.setTime(dd.getTime() + (d*24*60*60*1000)) ;e = typeof d != "undefined" ? ";expires="+dd.toGMTString() : ""; document.cookie = n+"="+v+e+";path=/"; }
-    function gcP(p) { if (document.location.search.indexOf(p) != -1) { return (""+document.location.search.split(p+"=")[1]).split("&")[0]; } else { return "not-set"; }  }
     var _reff=[];
-    _reff = dataLayer.filter(function (value) {if (value.setDomain) return value;});
+    _reff = dataLayer.filter(function (value) {if (value.setDomain)  return value; });
+    if (_reff.length === 0) _reff[0]={'setDomain':document.location.hostname};
+    
+    function rC(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
+    function sC(n,v,d) { dd = new Date(); dd.setTime(dd.getTime() + (d*24*60*60*1000)) ;e = typeof d != "undefined" ? ";expires="+dd.toGMTString() : ""; document.cookie = n+"="+v+e+";domain="+_reff[0].setDomain+";path=/"; }
+    function gcP(p) { if (document.location.search.indexOf(p) != -1) { return (""+document.location.search.split(p+"=")[1]).split("&")[0]; } else { return "not-set"; }  }
     
     //every pageview
     var __asc = (typeof rC("__sreff") != "undefined" ? rC("__sreff") : "");
