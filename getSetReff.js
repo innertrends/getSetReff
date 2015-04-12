@@ -61,7 +61,7 @@ function getSetReff()
         __gsr = "//campaign::c:["+gcP(__cmp)+"]m:["+gcP(__mdm)+"]s:["+gcP(__srcs)+"]";
     }
     else { __gsr = document.referrer; }
-    console.log(__gsr);
+    //console.log(__gsr);
     //get referrer domain & verify adwords
     __gsr = ((document.location.search.indexOf("gclid") != -1) ? "//campaign::[adwords]" : __gsr); 
     __gsr = ((typeof __gsr == "undefined" || __gsr == "" || __gsr.indexOf(_reff[0].setDomain)!=-1) ? "(direct)" : __gsr.split('/')[2]);
