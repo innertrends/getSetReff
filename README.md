@@ -1,7 +1,7 @@
 Store all referrers of website visitors
 ===============================================
 
-In April 2014, Google Analytics upgraded to a new tracking code and technology, named Universal Analytics. 
+In April 2015, Google Analytics upgraded to a new tracking code and technology, named Universal Analytics. 
 With the upgrade, the **__utmz** cookie that used to contain the last referrer details for each visitor was rolled out.
 
 getSetReff() replicates the functionality of the **__utmz** cookie and adds a few features on top:
@@ -9,7 +9,7 @@ getSetReff() replicates the functionality of the **__utmz** cookie and adds a fe
 * is able to identify marketing campaigns as referrers, based on the utm parameters
 * stores the length of each visit both in time spent and in number of pages viewed
 
-Setting it up
+Setting it up now 
 -------------
 
 **Step 1**:
