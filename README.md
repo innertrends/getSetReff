@@ -52,19 +52,19 @@ Before diving into cookie examples, here is a bit of explanation of the special 
 ### Single referrer
 When a visitor first gets to your website, the *__reff* will have a value similar to this one:
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1"
+"[[landing-page]]hsrd.yahoo.com&1396714229529.1396714229529.1"
 ```
 
 ### Multiple referrers
 Subsequent future visits will drive the *__reff* cookie to grow to this
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1|www.google.com&1396714366071.1396714366071.1"
+"[[landing-page]]hsrd.yahoo.com&1396714229529.1396714229529.1|[[landing-page]]www.google.com&1396714366071.1396714366071.1"
 ```
 
 ### Marketing Campaigns as referrers
 If the 3rd visit will be via a marketing campaign (which uses utm variables), the cookie will become
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1|www.google.com&1396714366071.1396714366071.1|c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1"
+"[[landing-page]]hsrd.yahoo.com&1396714229529.1396714229529.1|[[landing-page]]www.google.com&1396714366071.1396714366071.1|[[landing-page]]c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1"
 ```
 *c* represents the campaign name, *m* the medium name and *s* the source name.
 
@@ -72,7 +72,7 @@ If the 3rd visit will be via a marketing campaign (which uses utm variables), th
 ### AdWords campaigns
 If the 4th traffic source that brought the user to the website was AdWords, the cookie will look like this
 ```
-"hsrd.yahoo.com&1396714229529.1396714229529.1|www.google.com&1396714366071.1396714366071.1|c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1|www.google.com:[adwords]&1396714638762.1396714638762.1"
+"[[landing-page]]hsrd.yahoo.com&1396714229529.1396714229529.1|[[landing-page]]www.google.com&1396714366071.1396714366071.1|[[landing-page]]c:[discount]m:[mail]s:[affiliate]&1396714474814.1396714474814.1|[[landing-page]]cr:[XXXXXXXXXXXXX]m:[adwords]&1396714638762.1396714638762.1"
 ```
 
 
